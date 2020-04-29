@@ -45,7 +45,7 @@ const UpdateMovie = props => {
 
     return (
         <div>
-            <h2>Update Movie</h2>
+            <h2 className="update-form">Update Movie</h2>
             <form onSumbit={handleSubmit}>
                 <input
                     type="text" 
@@ -75,7 +75,7 @@ const UpdateMovie = props => {
                     placeholders="Actor(s)"
                     value={item.stars}
                 />
-                <button>Update</button>
+                <button className="update-form-button">Update</button>
             </form>
         </div>
     )
