@@ -6,7 +6,7 @@ import Movie from "./Movies/Movie";
 import UpdateMovie from './Movies/UpdateMovie';
 import axios from 'axios';
 
-const App = () => {
+const App = (props) => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
@@ -33,15 +33,18 @@ const App = () => {
         <MovieList movies={movieList} />
       </Route>
 
-      <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
-      </Route>
+      <Route 
+        path="/movies/:id"
+        render={props => {
+          return <Movie {...props} addToSavedList={addToSavedList} />
+        }}
+      />
       <Route 
         path="/update-movie/:id"
-        render={props => (
-          <UpdateMovie {...props} movies={movieList} updateItems={setMovieList} />
-        )}
-      />
+        render={props => {
+          return <UpdateMovie {...props} addToSavedList={addToSavedList}/>
+        }}
+        />
     </>
   );
 };
